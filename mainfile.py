@@ -16,7 +16,7 @@ from transformers import pipeline
 py_version = platform.python_version()
 db_path = 'cns_practicals.db'
 
-selection = st.sidebar.radio("select", ("File GPT",'TEXT SUMMARIZER from doc' "add a file","Python Compiler","music player","Translator",'CLI','Cloud Storage','add Images','Gallery'))
+selection = st.sidebar.radio("select", ("File GPT",'TEXT SUMMARIZER from doc', "add a file","Python Compiler","music player","Translator",'CLI','Cloud Storage','add Images','Gallery'))
 if selection == 'files':
 
     def create_login_history_table():
