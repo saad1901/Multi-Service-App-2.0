@@ -343,7 +343,6 @@ elif selection == 'File GPT':
             except Exception as e:
                 st.error(f"An error occurred: {e}")
 
-
     elif not uploaded_file:
         st.info("Please upload a document.")
 
@@ -352,7 +351,6 @@ elif selection == 'File GPT':
 
 elif selection == 'TEXT SUMMARIZER from doc':
     st.header("Coming Soon")
-
 
 else:
     st.header(':red[something went wrong]')

@@ -1,0 +1,5 @@
+1 resolve Summarization issue
+2 add mailing feature
+3 add some looks
+4 resume 
+5 integrate streamlit paging feature
