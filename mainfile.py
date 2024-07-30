@@ -269,39 +269,87 @@ elif selection == 'add Images':
             save_captured_photo(captured_photo)
 
 elif selection == 'File GPT':
-    with st.sidebar:
-        anthropic_api_key = st.text_input("Anthropic API Key", key="file_qa_api_key", type="password")
-        "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/1_File_Q%26A.py)"
-        "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+    def extract_text_from_pdf(pdf_file):
+        reader = PdfReader(pdf_file)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text()
+        return text
     
-    st.title("📝 File Q&A with Anthropic")
+    def extract_text_from_word(docx_file):
+        document = Document(docx_file)
+        text = "\n".join([paragraph.text for paragraph in document.paragraphs])
+        return text
     
-    uploaded_file = st.file_uploader("Upload an article", type=("txt", "md"))
+    def extract_text_from_ppt(ppt_file):
+        presentation = Presentation(ppt_file)
+        text = ""
+        for slide in presentation.slides:
+            for shape in slide.shapes:
+                if hasattr(shape, "text"):
+                    text += shape.text + "\n"
+        return text
     
-    question = st.text_input(
-        "Ask something about the article",
-        placeholder="Can you give me a short summary?",
-        disabled=not uploaded_file,
-    )
+    def extract_text(file):
+        if file.type == "application/pdf":
+            return extract_text_from_pdf(file)
+        elif file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+            return extract_text_from_word(file)
+        elif file.type == "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+            return extract_text_from_ppt(file)
+        else:
+            return "Unsupported file format."
     
-    if uploaded_file and question and not anthropic_api_key:
-        st.info("Please add your Anthropic API key to continue.")
+    # Streamlit app interface
+    st.title("Document Q&A with Anthropic")
+    st.write("Upload a document (PDF, Word, PowerPoint) and ask a question or give a command to summarize the content.")
     
-    if uploaded_file and question and anthropic_api_key:
-        article = uploaded_file.read().decode()
-        prompt = f"""{anthropic.HUMAN_PROMPT} Here's an article:\n\n
-        {article}\n\n\n\n{question}{anthropic.AI_PROMPT}"""
+    anthropic_api_key = st.text_input("Anthropic API Key", type="password")
+    uploaded_file = st.file_uploader("Upload a document", type=["pdf", "docx", "pptx"])
+    prompt = st.text_input("Enter your prompt", placeholder="Summarize the document")
     
-        client = anthropic.Client(api_key=anthropic_api_key)
-        # Assuming the correct method might be something like 'generate_response' or similar
-        response = client.generate_response(  # Replace with the correct method
-            prompt=prompt,
-            stop_sequences=[anthropic.HUMAN_PROMPT],
-            model="claude-v1",  # "claude-2" for Claude 2 model
-            max_tokens=100,  # Adjust parameter name if needed
-        )
-        st.write("### Answer")
-        st.write(response.get('completion', 'No completion found'))  # Adjust based on response structure
+    if uploaded_file and prompt and anthropic_api_key:
+        with st.spinner('Processing...'):
+            # Extract text from the uploaded document
+            article = extract_text(uploaded_file)
+            
+            # Prepare the prompt for the API
+            prompt_text = f"{anthropic.HUMAN_PROMPT} Here's a document:\n\n{article}\n\n\n\n{prompt}{anthropic.AI_PROMPT}"
+            
+            try:
+                # Set the headers and data for the request
+                headers = {
+                    "x-api-key": anthropic_api_key,
+                    "Content-Type": "application/json",
+                }
+                data = {
+                    "prompt": prompt_text,
+                    "model": "claude-v1",  # or "claude-2" if available
+                    "max_tokens": 100,  # Adjust as needed
+                    "stop_sequences": [anthropic.HUMAN_PROMPT],
+                }
+                
+                # Make the POST request to the API
+                response = requests.post("https://api.anthropic.com/v1/messages", headers=headers, json=data)
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    # Display the response
+                    st.write("### Response")
+                    st.write(result.get('completion', 'No completion found'))  # Adjust based on response structure
+                else:
+                    st.error(f"Error: {response.status_code} - {response.text}")
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
+    
+    elif not anthropic_api_key:
+        st.info("Please enter your Anthropic API key.")
+    
+    elif not uploaded_file:
+        st.info("Please upload a document.")
+    
+    elif not prompt:
+        st.info("Please enter a prompt.")
 
 else:
     st.header(':red[something went wrong]')
