@@ -341,8 +341,6 @@ elif selection == 'File GPT':
             except Exception as e:
                 st.error(f"An error occurred: {e}")
 
-    elif not anthropic_api_key:
-        st.info("Please enter your Anthropic API key.")
 
     elif not uploaded_file:
         st.info("Please upload a document.")
