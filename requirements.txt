@@ -4,3 +4,5 @@ requests==2.26.0
 anthropic
 transformers
 PyPDF2
+tensorflow
+torch
