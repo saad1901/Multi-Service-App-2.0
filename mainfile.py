@@ -11,6 +11,7 @@ from pydub import AudioSegment
 from pydub.playback import play
 import anthropic
 from PyPDF2 import PdfReader
+import requests
 from transformers import pipeline
 
 py_version = platform.python_version()
