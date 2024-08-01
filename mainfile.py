@@ -239,7 +239,7 @@ elif selection == 'Cloud Storage':
 
     st.subheader("Packages")
     st.text("Upload Files")
-    st.info('under development :/ (Currntly The Uploaded files will be stored as long as app is Up, once it went in sleep files are delted)')
+    st.info('under development :/ ("Uploaded files are temporary; they disappear once the app sleeps.")')
     upload_file()
 
     st.subheader("Download Files")
