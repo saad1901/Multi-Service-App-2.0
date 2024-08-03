@@ -6,5 +6,3 @@ transformers
 PyPDF2
 tensorflow
 torch
-smtplib
---upgrade pip
