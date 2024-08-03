@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 
-st.logo('images\banner-app-Photoroom.png', icon_image='images\image.png')
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Hello From Saad",
     page_icon="🙋🏻‍♂️",
