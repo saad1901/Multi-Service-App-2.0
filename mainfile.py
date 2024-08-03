@@ -359,7 +359,7 @@ elif selection == 'Email':
     st.subheader('Email Service by saad@bravo')
     a,b = st.columns(2)
     to = a.text_input("Enter Recipient's Address")
-    fr = b.text_input("Enter Your Address (this address will be displayed at recipient's End)")
+    fr = b.text_input("From (optional)")
     msg = st.text_area('Enter Message to Send')
     
 
