@@ -363,10 +363,12 @@ elif selection == 'Email':
     msg = st.text_area('Enter Message to Send')
     if fr is None:
         fr = "test.service@saad"
-    if to and msg:
-        sub = st.button('Send')
     
-
+    sub = st.button('Send')
+    if fr is None or msg is none:
+        warn = st.warning("Field required")
+        time.sleep(2)
+        warn.empty()
 
 
 else:
