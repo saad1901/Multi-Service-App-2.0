@@ -6,3 +6,4 @@ transformers
 googletrans
 boto3
 pillow
+anthropic
