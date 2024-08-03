@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="📝",
 )
 
-msg = "Coming Soon"
+msg = """Coming Soon"""
 
 def stream_data():
     for word in msg.split(" "):
