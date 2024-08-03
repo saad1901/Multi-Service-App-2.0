@@ -365,7 +365,7 @@ elif selection == 'Email':
         fr = "test.service@saad"
     
     sub = st.button('Send')
-    if fr is None or msg is None:
+    if fr is None or msg is None and sub:
         warn = st.warning("Field required")
         time.sleep(2)
         warn.empty()
