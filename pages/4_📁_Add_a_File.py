@@ -4,7 +4,7 @@ import time
 
 st.set_page_config(
     page_title="Add a File",
-    page_icon="📁",
+    page_icon="📄",
 )
 
 st.text("⚠️Note: The Files won't be stored in Github")
