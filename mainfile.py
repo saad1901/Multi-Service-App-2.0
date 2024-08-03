@@ -363,7 +363,7 @@ elif selection == 'Email':
     to = st.text_input("Enter Recipient's Address")
     subj = st.text_input("Subject of Email")
     msg = st.text_area('Enter Message to Send')
-    
+
     sub = st.button('Send')
     if sub:
         if to == "" or msg == "":
@@ -375,18 +375,18 @@ elif selection == 'Email':
             smtp_port = 587
             smtp_username = st.secrets["smtp-usr"]
             smtp_password = st.secrets["smtp-pas"]
-    
+
             from_email = 'business2saad@gmail.com'
             to_email = to
             subject = subj
             body = msg
-    
+
             msg = MIMEMultipart()
             msg['From'] = from_email
             msg['To'] = to_email
             msg['Subject'] = subject
             msg.attach(MIMEText(body, 'plain'))
-    
+
             try:
                 server = smtplib.SMTP(smtp_server, smtp_port)
                 server.starttls()
@@ -395,8 +395,8 @@ elif selection == 'Email':
                 server.quit()
                 succ = st.success("Email sent successfully!")
                 time.sleep(3)
-                succ.clear()
-                
+                succ.empty()
+
             except Exception as e:
                 err = st.error(f"Failed to send email: {e}")
                 time.sleep(2)
