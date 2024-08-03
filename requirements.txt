@@ -1,8 +1,10 @@
 pydub==0.25.1
 googletrans==4.0.0-rc1
 requests==2.26.0
+sib_api_v3_sdk
 anthropic
 transformers
 PyPDF2
 tensorflow
 torch
+smtplib

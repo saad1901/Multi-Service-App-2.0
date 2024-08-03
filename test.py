@@ -1,19 +1,48 @@
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 import streamlit as st
 import time
 
-st.header('Email Service by saad.BravoAPI')
-a,b = st.columns(2)
-to = a.text_input("Enter Recipient's Address")
-fr = b.text_input("From (optional)")
+st.header('Email Service by saad.BrevoAPI')
+to = st.text_input("Enter Recipient's Address")
+subj = st.text_input("Subject of Email")
 msg = st.text_area('Enter Message to Send')
-if fr =="":
-    fr = "test.service@saad"
 
 sub = st.button('Send')
 if sub:
     if to == "" or msg == "":
-        st.subheader(fr)
-        warn = st.warning("Field required")
+        warn = st.warning("Fields required")
         time.sleep(2)
         warn.empty()
+    else:
+        smtp_server = 'smtp-relay.brevo.com'
+        smtp_port = 587
+        smtp_username = st.secrets["smtp-usr"]
+        smtp_password = st.secrets["smtp-pas"]
+
+        from_email = 'business2saad@gmail.com'
+        to_email = to
+        subject = subj
+        body = msg
+
+        msg = MIMEMultipart()
+        msg['From'] = from_email
+        msg['To'] = to_email
+        msg['Subject'] = subject
+        msg.attach(MIMEText(body, 'plain'))
+
+        try:
+            server = smtplib.SMTP(smtp_server, smtp_port)
+            server.starttls()
+            server.login(smtp_username, smtp_password)
+            server.sendmail(from_email, to_email, msg.as_string())
+            server.quit()
+            succ = st.success("Email sent successfully!")
+            time.sleep(3)
+            succ.clear()
+            
+        except Exception as e:
+            err = st.error(f"Failed to send email: {e}")
+            time.sleep(2)
+            err.empty()
