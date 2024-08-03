@@ -1,48 +1,53 @@
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 import streamlit as st
-import time
+import pandas as pd
+import matplotlib.pyplot as plt
 
-st.header('Email Service by saad.BrevoAPI')
-to = st.text_input("Enter Recipient's Address")
-subj = st.text_input("Subject of Email")
-msg = st.text_area('Enter Message to Send')
+# Page configuration
+st.set_page_config(
+    page_title="Your Name - Portfolio",
+    page_icon="✅",
+    layout="wide"
+)
 
-sub = st.button('Send')
-if sub:
-    if to == "" or msg == "":
-        warn = st.warning("Fields required")
-        time.sleep(2)
-        warn.empty()
-    else:
-        smtp_server = 'smtp-relay.brevo.com'
-        smtp_port = 587
-        smtp_username = st.secrets["smtp-usr"]
-        smtp_password = st.secrets["smtp-pas"]
+# Custom CSS for styling
+def add_bg_color():
+    st.markdown("""
+        <style>
+        body {
+            background-color: #f0f2f6;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+add_bg_color()
 
-        from_email = 'business2saad@gmail.com'
-        to_email = to
-        subject = subj
-        body = msg
+# Header section
+st.title("Your Name")
+st.subheader("Your Profession/Title")
+st.image("your_profile_pic.jpg")
 
-        msg = MIMEMultipart()
-        msg['From'] = from_email
-        msg['To'] = to_email
-        msg['Subject'] = subject
-        msg.attach(MIMEText(body, 'plain'))
+# About section
+st.header("About Me")
+st.write("A brief summary of your background and goals.")
 
-        try:
-            server = smtplib.SMTP(smtp_server, smtp_port)
-            server.starttls()
-            server.login(smtp_username, smtp_password)
-            server.sendmail(from_email, to_email, msg.as_string())
-            server.quit()
-            succ = st.success("Email sent successfully!")
-            time.sleep(3)
-            succ.clear()
-            
-        except Exception as e:
-            err = st.error(f"Failed to send email: {e}")
-            time.sleep(2)
-            err.empty()
+# Skills section
+st.header("Skills")
+st.write("List of your skills with icons or progress bars")
+
+# Projects section
+st.header("Projects")
+# Display projects with images, descriptions, and links
+
+# Experience section
+st.header("Experience")
+# Display work experience with company names, roles, and dates
+
+# Education section
+st.header("Education")
+# Display educational qualifications with degrees, institutions, and dates
+
+# Contact section
+st.header("Contact")
+# Display contact information with email, phone number, and social media links
+
+# Footer
+st.write("Copyright © Your Name")

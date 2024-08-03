@@ -20,3 +20,4 @@ if st.button('hello'):
 
 # FOR LINKEDIN
 st.page_link("http://www.google.com", label="Google", icon="👑")
+
