@@ -8,7 +8,7 @@ st.set_page_config(
 )
 
 st.title("AWS S3 Cloud Storage")
-
+st.info('Due to Charges, the App is currently Down !')
 st.info("""WORKING:
 1. **Access Keys**: 
    The AWS access keys (Access Key ID and Secret Access Key) are set up to interact with AWS S3.
@@ -21,9 +21,6 @@ st.info("""WORKING:
 
 4. **Error Handling**: 
    Implements error handling for cases where the file is not found or credentials are not available.
-
-            
-            Note: The upload functionality is currently commented out Due to Bills :)
 """)
 
 video_url = "cloud Project.mp4"
