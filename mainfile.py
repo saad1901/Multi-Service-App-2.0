@@ -17,7 +17,7 @@ from transformers import pipeline
 py_version = platform.python_version()
 db_path = 'cns_practicals.db'
 
-selection = st.sidebar.radio("select", ("File GPT",'TEXT SUMMARIZER from doc', "add a file","Python Compiler","music player","Translator",'CLI','Cloud Storage','add Images','Gallery'))
+selection = st.sidebar.radio("select", ("File GPT",'TEXT SUMMARIZER from doc', "Email","add a file","Python Compiler","music player","Translator",'CLI','Cloud Storage','add Images','Gallery'))
 if selection == 'files':
 
     def create_login_history_table():
@@ -338,7 +338,7 @@ elif selection == 'File GPT':
                     result = response.json()
                     # Display the response
                     st.write("### Response")
-                    st.write(result.get('completion', 'No completion found'))  # Adjust based on response structure
+                    st.write(result.get('completion', 'No completion found')) 
                 else:
                     st.error(f"Error: {response.status_code} - {response.text}")
             except Exception as e:
@@ -352,6 +352,17 @@ elif selection == 'File GPT':
 
 elif selection == 'TEXT SUMMARIZER from doc':
     st.header("Coming Soon")
+
+
+
+elif selection == 'Email':
+    st.subheader('Email Service by saad@bravo')
+    to = st.text_input("Enter Recipient's Address")
+    fr = st.text_input("Enter Your Address (this address will be displayed at recipient's End)")
+    msg = st.text_area('Enter Message to Send')
+    
+
+
 
 else:
     st.header(':red[something went wrong]')
