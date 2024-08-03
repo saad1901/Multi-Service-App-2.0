@@ -26,6 +26,10 @@ st.info("""WORKING:
             Note: The upload functionality is currently commented out Due to Bills :)
 """)
 
+video_url = "cloud Project.mp4"
+st.video(video_url, format="video/mp4")
+
+
 st.subheader("Here's the Code")
 
 code = """
