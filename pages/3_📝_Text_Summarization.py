@@ -7,7 +7,8 @@ st.set_page_config(
 msg = "COMING SOON!!"
 
 for word in msg.split(" "):
-        yield word + " "
-        time.sleep(0.2)
+    message_container.markdown(f"## {word}")
+    time.sleep(0.5)  # Adjust the delay as needed
+    
 # st.header("Coming Soon")
 st.snow()
