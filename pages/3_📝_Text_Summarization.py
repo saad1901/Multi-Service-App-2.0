@@ -6,3 +6,4 @@ st.set_page_config(
 )
 
 st.header("Coming Soon")
+st.snow()
