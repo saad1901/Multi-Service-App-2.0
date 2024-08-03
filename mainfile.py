@@ -7,7 +7,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import subprocess
-from googletrans import Translator
+
 import sqlite3
 import platform
 from pydub import AudioSegment
@@ -167,18 +167,6 @@ elif selection == "music player":
         st.audio(audio_path, format='audio/' + selected_audio_file.split('.')[-1])
 
 elif selection == "Translator":
-    def translate_text(text, target_language='en'):
-        translator = Translator()
-        translated_text = translator.translate(text, dest=target_language)
-        return translated_text.text
-    st.title("Language Translator")
-    source_text = st.text_area("Enter Text")
-    target_language = st.selectbox('Select Language', ('English', 'Hindi', 'Marathi', 'Urdu', 'Arabic'))
-    if source_text != "":
-        if target_language == 'Marathi': target_language = 'mr'
-        translated_text = translate_text(source_text, target_language.lower()[:2])
-        st.write(f"**Translated text ({target_language}):**")
-        st.markdown(translated_text)
 
 elif selection == 'CLI':
     pswd2 = st.text_input('Password:', type="password")
