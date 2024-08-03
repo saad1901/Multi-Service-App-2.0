@@ -16,4 +16,4 @@ translate_button = st.button("Translate")
 
 if translate_button and text:
     translation = translator.translate(text, src=src_lang, dest=dest_lang)
-    st.markdown(f"Translated text: {translation.text}")
+    st.code(f"Translated text: {translation.text}")
