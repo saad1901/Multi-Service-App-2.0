@@ -167,7 +167,7 @@ elif selection == "music player":
         st.audio(audio_path, format='audio/' + selected_audio_file.split('.')[-1])
 
 elif selection == "Translator":
-
+    pass
 elif selection == 'CLI':
     pswd2 = st.text_input('Password:', type="password")
     if pswd2 == st.secrets["psd3"]:
