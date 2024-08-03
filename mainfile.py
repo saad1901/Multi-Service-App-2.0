@@ -157,7 +157,7 @@ elif selection == "music player":
     st.title("🎵Music Player")
     uploaded_audio_file = st.file_uploader("Upload an audio file", type=["mp3", "wav"])
     # Select an audio file
-    audio_files = get_audio_files('songs-for-test')
+    audio_files = get_audio_files('songs')
     selected_audio_file = st.selectbox("Select an audio file", [""] + audio_files)
     if uploaded_audio_file is not None:
         audio_bytes = uploaded_audio_file.read()
