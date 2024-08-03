@@ -71,7 +71,8 @@ if uploaded_file and prompt:
             else:
                 st.error(f"Error: {response.status_code} - {response.text}")
         except Exception as e:
-            st.error(f"An error occurred: {e}")
+            # st.error(f"An error occurred: {e}")
+            st.warning('Sorry, No credits Left')
 
 elif not uploaded_file:
     st.info("Please upload a document.")
