@@ -357,8 +357,9 @@ elif selection == 'TEXT SUMMARIZER from doc':
 
 elif selection == 'Email':
     st.subheader('Email Service by saad@bravo')
-    to = st.text_input("Enter Recipient's Address")
-    fr = st.text_input("Enter Your Address (this address will be displayed at recipient's End)")
+    a,b = st.columns(2)
+    to = a.text_input("Enter Recipient's Address")
+    fr = b.text_input("Enter Your Address (this address will be displayed at recipient's End)")
     msg = st.text_area('Enter Message to Send')
     
 
