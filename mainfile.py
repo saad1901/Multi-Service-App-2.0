@@ -365,10 +365,11 @@ elif selection == 'Email':
         fr = "test.service@saad"
     
     sub = st.button('Send')
-    if sub and to == "" or msg == "":
-        warn = st.warning("Field required")
-        time.sleep(2)
-        warn.empty()
+    if sub:
+        if to == "" or msg == "":
+            warn = st.warning("Field required")
+            time.sleep(2)
+            warn.empty()
 
 
 else:
