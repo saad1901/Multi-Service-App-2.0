@@ -1,8 +1,8 @@
-pydub==0.25.1
-googletrans==4.0.0-rc1
-requests==2.26.0
-anthropic
-transformers
+streamlit
+pydub
 PyPDF2
-tensorflow
-torch
+requests
+transformers
+googletrans
+boto3
+pillow
