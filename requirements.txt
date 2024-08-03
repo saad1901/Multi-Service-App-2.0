@@ -7,4 +7,3 @@ transformers
 PyPDF2
 tensorflow
 torch
-smtplib
