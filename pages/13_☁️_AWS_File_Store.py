@@ -10,10 +10,18 @@ st.set_page_config(
 st.title("AWS S3 Cloud Storage")
 
 st.info("""WORKING:
-            1. **Access Keys**: The AWS access keys (Access Key ID and Secret Access Key) are set up to interact with AWS S3.
-            2. **File Upload Interface**: Provides a file uploader for users to choose a file for upload, and text inputs to specify the bucket name and file name for S3.
-            3. **Upload Functionality**: Includes a function `upload_to_aws` that uses `boto3` to handle file uploads to S3. This function handles potential errors such as file not found and credential issues.
-            4. **Error Handling**: Implements error handling for cases where the file is not found or credentials are not available.
+1. **Access Keys**: 
+   The AWS access keys (Access Key ID and Secret Access Key) are set up to interact with AWS S3.
+
+2. **File Upload Interface**: 
+   Provides a file uploader for users to choose a file for upload, and text inputs to specify the bucket name and file name for S3.
+
+3. **Upload Functionality**: 
+   Includes a function `upload_to_aws` that uses `boto3` to handle file uploads to S3. This function handles potential errors such as file not found and credential issues.
+
+4. **Error Handling**: 
+   Implements error handling for cases where the file is not found or credentials are not available.
+
             
             Note: The upload functionality is currently commented out Due to Bills :)
 """)
