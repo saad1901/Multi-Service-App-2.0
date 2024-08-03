@@ -7,3 +7,4 @@ googletrans
 boto3
 pillow
 anthropic
+deep_translator
