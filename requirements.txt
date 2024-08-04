@@ -11,5 +11,5 @@ deep_translator
 folium
 geopy
 streamlit_folium
-docx2pdf
-pandoc 
+python-docx
+reportlab
