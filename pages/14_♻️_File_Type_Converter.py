@@ -1,8 +1,8 @@
 import streamlit as st
-from docx2pdf import convert
+import subprocess
 import os
 
-tab1, tab2, tab3 = st.tabs(["Docx to PDF converter","test","test2"])
+tab1, tab2, tab3 = st.tabs(["Docx to PDF converter", "test", "test2"])
 
 with tab1:
     def convert_docx_to_pdf(docx_file_paths):
@@ -10,9 +10,9 @@ with tab1:
         for docx_file_path in docx_file_paths:
             try:
                 pdf_file_path = os.path.splitext(docx_file_path)[0] + '.pdf'
-                convert(docx_file_path)
+                subprocess.run(['pandoc', docx_file_path, '-o', pdf_file_path], check=True)
                 pdf_files.append(pdf_file_path)
-            except Exception as e:
+            except subprocess.CalledProcessError as e:
                 st.error(f"Error converting {docx_file_path}: {str(e)}")
         return pdf_files
 
