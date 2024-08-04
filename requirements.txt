@@ -11,3 +11,4 @@ deep_translator
 folium
 geopy
 streamlit_folium
+docx2pdf
