@@ -2,7 +2,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 import requests
 import anthropic
-
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="File GPT",
     page_icon="📄",
