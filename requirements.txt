@@ -12,3 +12,5 @@ folium
 geopy
 streamlit_folium
 docx2pdf
+pandoc 
+texlive
