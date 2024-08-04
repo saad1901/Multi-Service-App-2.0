@@ -8,10 +8,19 @@ st.set_page_config(
 
 st.title("Add Images")
 
-uploaded_image = st.file_uploader("Choose an image file", type=["jpg", "png", "jpeg"])
-
-if uploaded_image:
-    image = Image.open(uploaded_image)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
-    image.save(f'images/{uploaded_image.name}')
-    st.success(f"Image {uploaded_image.name} saved successfully.")
+def save_captured_photo(uploaded_file):
+        filename = f"FromWeb_{int(time.time())}.jpg"
+        filepath = os.path.join(os.getcwd(), filename)
+        with open(filepath, "wb") as buffer:
+            buffer.write(uploaded_file.getvalue())
+        st.success(f"Image saved successfully as '{filepath}'.")
+uploaded_files = st.file_uploader("Upload multiple photos", accept_multiple_files=True)
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        save_captured_photo(uploaded_file)
+on = st.toggle('Open Camera')
+if on:
+    captured_photo = st.camera_input(":red[OR Take a picture]")
+    upload = st.button('upload')
+    if captured_photo is not None and upload:
+        save_captured_photo(captured_photo)
