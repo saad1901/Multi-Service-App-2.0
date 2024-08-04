@@ -8,3 +8,6 @@ boto3
 pillow
 anthropic
 deep_translator
+folium
+st_folium
+geopy
