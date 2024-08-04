@@ -15,28 +15,39 @@ class PDF(FPDF):
         self.set_font('Arial', 'I', 8)
         self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
 
-    def chapter_title(self, title):
-        self.set_font('Arial', 'B', 12)
-        self.cell(0, 10, title, 0, 1, 'L')
-        self.ln(10)
-
-    def chapter_body(self, body):
-        self.set_font('Arial', '', 12)
-        self.multi_cell(0, 10, body)
+    def add_text(self, text, style):
+        if 'B' in style:
+            self.set_font('Arial', 'B', 12)
+        elif 'I' in style:
+            self.set_font('Arial', 'I', 12)
+        elif 'U' in style:
+            self.set_font('Arial', 'U', 12)
+        else:
+            self.set_font('Arial', '', 12)
+        self.multi_cell(0, 10, text)
         self.ln()
 
-def docx_to_text(docx_file_path):
+def docx_to_pdf(docx_file_path, pdf_file_path):
     doc = Document(docx_file_path)
-    full_text = []
-    for para in doc.paragraphs:
-        full_text.append(para.text)
-    return '\n'.join(full_text)
-
-def text_to_pdf(text, pdf_file_path):
     pdf = PDF()
     pdf.add_page()
-    pdf.chapter_title("Document Content")
-    pdf.chapter_body(text)
+
+    for para in doc.paragraphs:
+        runs = para.runs
+        if runs:
+            for run in runs:
+                text = run.text
+                style = ""
+                if run.bold:
+                    style += "B"
+                if run.italic:
+                    style += "I"
+                if run.underline:
+                    style += "U"
+                pdf.add_text(text, style)
+        else:
+            pdf.ln()
+
     pdf.output(pdf_file_path)
 
 with tab1:
@@ -46,7 +57,6 @@ with tab1:
 
     if uploaded_files:
         with st.spinner('Converting...'):
-            # Save uploaded files to a temporary directory
             temp_dir = "temp_docs"
             os.makedirs(temp_dir, exist_ok=True)
             file_paths = []
@@ -59,9 +69,8 @@ with tab1:
             pdf_files = []
             for file_path in file_paths:
                 try:
-                    text = docx_to_text(file_path)
                     pdf_file_path = os.path.splitext(file_path)[0] + '.pdf'
-                    text_to_pdf(text, pdf_file_path)
+                    docx_to_pdf(file_path, pdf_file_path)
                     pdf_files.append(pdf_file_path)
                 except Exception as e:
                     st.error(f"Error converting {file_path}: {str(e)}")
