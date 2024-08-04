@@ -12,12 +12,15 @@ st.set_page_config(
 st.title("Add Images")
 
 def save_captured_photo(uploaded_file):
-        filename = f"image_{int(time.time())}.jpg"
-        filepath = os.path.join(os.getcwd(), filename)
-        with open(filepath, "wb") as buffer:
-            buffer.write(uploaded_file.getvalue())
-        st.success(f"Image saved successfully as '{filepath}'.")
-uploaded_files = st.file_uploader("Upload multiple photos", accept_multiple_files=True)
+    photos_dir = "photos"
+    if not os.path.exists(photos_dir):
+        os.makedirs(photos_dir)
+    filename = f"image_{int(time.time())}.jpg"
+    filepath = os.path.join(photos_dir, filename)
+    with open(filepath, "wb") as buffer:
+        buffer.write(uploaded_file.getvalue())
+    st.success(f"Image saved successfully as '{filepath}'.")
+    
 if uploaded_files:
     for uploaded_file in uploaded_files:
         save_captured_photo(uploaded_file)
