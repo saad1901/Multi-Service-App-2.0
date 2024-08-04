@@ -1,5 +1,7 @@
 import streamlit as st
 from PIL import Image
+import time
+
 st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Add Images",
@@ -9,7 +11,7 @@ st.set_page_config(
 st.title("Add Images")
 
 def save_captured_photo(uploaded_file):
-        filename = f"FromWeb_{int(time.time())}.jpg"
+        filename = f"image_{int(time.time())}.jpg"
         filepath = os.path.join(os.getcwd(), filename)
         with open(filepath, "wb") as buffer:
             buffer.write(uploaded_file.getvalue())
