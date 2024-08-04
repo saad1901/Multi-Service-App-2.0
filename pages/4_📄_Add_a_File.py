@@ -26,7 +26,7 @@ if passwd == st.secrets['psd2']:
         time.sleep(3)
         succ.empty()
 
-    with st.form("form"):
+    with st.form("form",clear_on_submit=True):
         x, y = st.columns(2)
         fname = x.text_input('Enter Filename')
         ext = y.selectbox('Select Extension', ('txt', 'py', 'cpp', 'java', 'json', 'js', 'html', 'css', 'bat', 'c', 'kt'))
