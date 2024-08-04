@@ -2,6 +2,11 @@ import folium
 import streamlit as st
 from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
+st.set_page_config(
+    page_title="Maps",
+    page_icon="📌",
+)
 
 def get_coordinates(place_name):
     geolocator = Nominatim(user_agent="streamlit_app")
