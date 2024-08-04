@@ -10,3 +10,4 @@ anthropic
 deep_translator
 folium
 geopy
+streamlit_folium
