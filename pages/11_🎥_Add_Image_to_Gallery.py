@@ -21,6 +21,7 @@ def save_captured_photo(uploaded_file):
         buffer.write(uploaded_file.getvalue())
     st.success(f"Image saved successfully as '{filepath}'.")
     
+uploaded_files = st.file_uploader("Upload multiple photos", accept_multiple_files=True)
 if uploaded_files:
     for uploaded_file in uploaded_files:
         save_captured_photo(uploaded_file)
