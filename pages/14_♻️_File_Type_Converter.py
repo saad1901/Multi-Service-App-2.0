@@ -1,10 +1,29 @@
 import streamlit as st
 from docx import Document
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+from fpdf import FPDF
 import os
 
 tab1, tab2, tab3 = st.tabs(["Docx to PDF converter", "test", "test2"])
+
+class PDF(FPDF):
+    def header(self):
+        self.set_font('Arial', 'B', 12)
+        self.cell(0, 10, 'Document Title', 0, 1, 'C')
+
+    def footer(self):
+        self.set_y(-15)
+        self.set_font('Arial', 'I', 8)
+        self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
+
+    def chapter_title(self, title):
+        self.set_font('Arial', 'B', 12)
+        self.cell(0, 10, title, 0, 1, 'L')
+        self.ln(10)
+
+    def chapter_body(self, body):
+        self.set_font('Arial', '', 12)
+        self.multi_cell(0, 10, body)
+        self.ln()
 
 def docx_to_text(docx_file_path):
     doc = Document(docx_file_path)
@@ -14,17 +33,11 @@ def docx_to_text(docx_file_path):
     return '\n'.join(full_text)
 
 def text_to_pdf(text, pdf_file_path):
-    c = canvas.Canvas(pdf_file_path, pagesize=letter)
-    width, height = letter
-    lines = text.split('\n')
-    y = height - 40
-    for line in lines:
-        c.drawString(40, y, line)
-        y -= 15
-        if y < 40:
-            c.showPage()
-            y = height - 40
-    c.save()
+    pdf = PDF()
+    pdf.add_page()
+    pdf.chapter_title("Document Content")
+    pdf.chapter_body(text)
+    pdf.output(pdf_file_path)
 
 with tab1:
     st.title("Batch DOCX to PDF Converter")

@@ -12,4 +12,4 @@ folium
 geopy
 streamlit_folium
 python-docx
-reportlab
+fpdf2
