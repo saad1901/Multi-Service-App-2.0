@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import time
+import os
 
 st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
