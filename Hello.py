@@ -10,7 +10,7 @@ st.set_page_config(
 st.write("# Welcome to Streamlit! 👋")
 
 
-st.toast('Open SideBar for Other Application')
+# st.toast('Open SideBar for Other Application')
 # use st.tab for personal info
 if st.button('hello'):
     st.toast('this is a toast msg')
