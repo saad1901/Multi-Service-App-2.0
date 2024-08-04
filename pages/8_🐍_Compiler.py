@@ -1,7 +1,7 @@
 import streamlit as st
 import subprocess
 import platform
-
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Python Compiler",
     page_icon="🐍",

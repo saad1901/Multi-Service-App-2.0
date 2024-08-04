@@ -3,7 +3,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import time
-
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Email Service",
     page_icon="📧",

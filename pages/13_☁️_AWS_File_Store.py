@@ -1,7 +1,7 @@
 import streamlit as st
 import boto3
 from botocore.exceptions import NoCredentialsError
-
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Cloud Storage",
     page_icon="☁️",
