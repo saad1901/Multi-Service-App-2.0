@@ -2,7 +2,6 @@ import streamlit as st
 import convertapi
 import os
 
-# Set your ConvertAPI secret key
 convertapi.api_secret = 'I6QNdcljjJWKTIN3'
 
 def convert_docx_to_pdf(docx_path, pdf_path):
