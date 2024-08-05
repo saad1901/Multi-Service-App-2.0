@@ -35,16 +35,26 @@ with a:
 
 with b:
     st.subheader("Gallery")
+    
     def load_images(directory):
         images = [os.path.join(directory, file) for file in os.listdir(directory) if file.endswith(('.jpg', '.png', '.jpeg'))]
         return images
-
+    
     image_files = load_images('photos')
-
+    
     if image_files:
-        selected_image = st.selectbox("Select an image", image_files)
-        if selected_image:
-            image = Image.open(selected_image)
-            st.image(image, caption=os.path.basename(selected_image), use_column_width=True)
+        # Number of columns in the grid
+        num_columns = 3
+        columns = st.columns(num_columns)
+        
+        for i, image_file in enumerate(image_files):
+            # Open the image
+            image = Image.open(image_file)
+            
+            # Display the image in the appropriate column
+            col = columns[i % num_columns]
+            with col:
+                st.image(image, caption=os.path.basename(image_file), width=200)  # Adjust the width as needed
     else:
         st.info("No images found. Please add images in the 'Add Images' section.")
+    
