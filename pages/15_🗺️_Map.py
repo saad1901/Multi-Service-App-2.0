@@ -38,4 +38,4 @@ if place_name:
     else:
         st.error("Could not find the place. Please try another place name or address.")
 
-st_data = st_folium(m, width=625, height=400)
+st_data = st_folium(m, width=725, height=500)

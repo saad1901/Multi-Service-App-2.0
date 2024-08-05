@@ -7,13 +7,15 @@ st.set_page_config(
     page_icon="🙋🏻‍♂️",
 )
 
-st.write("# Welcome to Streamlit! 👋")
+
+
+# st.write("# Welcome to Streamlit! 👋")
 
 
 # st.toast('Open SideBar for Other Application')
 # use st.tab for personal info
-if st.button('hello'):
-    st.toast('this is a toast msg')
+# if st.button('hello'):
+#     st.toast('this is a toast msg')
 # st.snow()
 
 # st.page_link("pages/page_1.py", label="Page 1", icon="1️⃣")
