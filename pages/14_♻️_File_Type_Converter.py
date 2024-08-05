@@ -35,5 +35,6 @@ with t1:
         else:
             st.error("DOCX file not generated.")
 
-    st.write("Upload a PDF file and click the button to convert it to a DOCX.")
+    if uploaded_file is None :
+        st.write("Upload a PDF file to convert it to a DOCX.")
 
