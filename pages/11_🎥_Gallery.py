@@ -54,6 +54,6 @@ with b:
             # Display the image in the appropriate column
             col = columns[i % num_columns]
             with col:
-                st.image(image, caption=os.path.basename(image_file), width=250)  # Adjust the width as needed
+                st.image(image, caption=os.path.basename(image_file), width=300)  # Adjust the width as needed
     else:
         st.info("No images found. Please add images in the 'Add Images' section.")
