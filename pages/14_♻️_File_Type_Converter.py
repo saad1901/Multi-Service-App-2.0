@@ -19,7 +19,7 @@ with t1:
             st.toast("✅Conversion successful!")
         except Exception as e:
             st.error(f"⚠️Conversion failed: {e}")
-    st.title("PDF to DOCX Converter")
+    st.subheader("PDF to DOCX Converter")
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
     if uploaded_file is not None:
         pdf_path = "uploaded.pdf"
