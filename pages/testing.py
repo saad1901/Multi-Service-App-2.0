@@ -6,7 +6,7 @@ def convert_docx_to_pdf(docx_path, pdf_path):
     # Convert DOCX to PDF using docx2pdf
     convert(docx_path, pdf_path)
 
-st.title("DOCX to PDF Converter")
+st.title("DOCX tooo PDF Converter")
 
 uploaded_file = st.file_uploader("Choose a DOCX file", type="docx")
 
