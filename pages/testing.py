@@ -7,7 +7,7 @@ convertapi.api_secret = 'I6QNdcljjJWKTIN3'
 def convert_docx_to_pdf(docx_path, pdf_path):
     try:
         # Perform the conversion
-        result = convertapi.convert('pdf', {'File': docx_path}, from_format='docx')
+        result = convertapi.convert('pdf', {'File': docx_path}, from_format='pdf')
         
         # Save the converted PDF to the specified path
         result.save_files(pdf_path)
