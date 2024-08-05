@@ -43,17 +43,12 @@ with b:
     image_files = load_images('photos')
 
     if image_files:
-        # Number of columns in the grid
         num_columns = 3
         columns = st.columns(num_columns)
-
         for i, image_file in enumerate(image_files):
-            # Open the image
             image = Image.open(image_file)
-
-            # Display the image in the appropriate column
             col = columns[i % num_columns]
             with col:
-                st.image(image, caption=os.path.basename(image_file), width=300)  # Adjust the width as needed
+                st.image(image, caption=os.path.basename(image_file), width=300)
     else:
         st.info("No images found. Please add images in the 'Add Images' section.")
