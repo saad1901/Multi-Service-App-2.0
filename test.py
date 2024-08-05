@@ -1,41 +1,61 @@
 import streamlit as st
-from docx import Document
-import pdfkit
-import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import time
 
-def convert_docx_to_pdf(docx_path, pdf_path):
-    # Read the DOCX file
-    doc = Document(docx_path)
-    html_content = ''
-    
-    # Convert DOCX content to HTML
-    for para in doc.paragraphs:
-        html_content += f'<p>{para.text}</p>'
-    
-    # Save HTML content to a temporary file
-    temp_html_path = 'temp.html'
-    with open(temp_html_path, 'w') as f:
-        f.write(html_content)
-    
-    # Convert HTML to PDF using pdfkit
-    pdfkit.from_file(temp_html_path, pdf_path)
-    
-    # Remove the temporary HTML file
-    os.remove(temp_html_path)
+# Set up page configuration
+st.set_page_config(
+    page_title="Email Service",
+    page_icon="📧",
+    layout="centered"
+)
 
-st.title("DOCX to PDF Converter")
+# Add a logo and header
+st.image('images/banner-app-Photoroom.png', use_column_width=True)
+st.title('Email Service by saad.BrevoAPI')
+st.subheader('Send emails easily with our service')
 
-uploaded_file = st.file_uploader("Choose a DOCX file", type="docx")
+# Create a form for the email inputs
+with st.form(key='email_form'):
+    to = st.text_input("Enter Recipient's Address")
+    subj = st.text_input("Subject of Email")
+    msg = st.text_area('Enter Message to Send')
 
-if uploaded_file is not None:
-    with open("uploaded.docx", "wb") as f:
-        f.write(uploaded_file.getbuffer())
-    
-    # Convert the DOCX file to PDF
-    convert_docx_to_pdf("uploaded.docx", "output.pdf")
-    
-    # Provide the PDF file for download
-    with open("output.pdf", "rb") as f:
-        st.download_button("Download PDF", f, file_name="output.pdf")
+    # Form submit button
+    submit_button = st.form_submit_button(label='Send')
 
-st.write("Upload a DOCX file and click the button to convert it to a PDF.")
+if submit_button:
+    if to == "" or msg == "":
+        st.warning("All fields are required")
+    else:
+        smtp_server = 'smtp-relay.brevo.com'
+        smtp_port = 587
+        smtp_username = st.secrets["smtp-usr"]
+        smtp_password = st.secrets["smtp-pas"]
+
+        from_email = 'business2saad@gmail.com'
+        to_email = to
+        subject = subj
+        body = msg
+
+        msg = MIMEMultipart()
+        msg['From'] = from_email
+        msg['To'] = to_email
+        msg['Subject'] = subject
+        msg.attach(MIMEText(body, 'plain'))
+
+        try:
+            server = smtplib.SMTP(smtp_server, smtp_port)
+            server.starttls()
+            server.login(smtp_username, smtp_password)
+            server.sendmail(from_email, to_email, msg.as_string())
+            server.quit()
+            succ = st.success("Email sent successfully!")
+            time.sleep(3)
+            succ.empty()
+
+        except Exception as e:
+            err = st.error(f"Failed to send email: {e}")
+            time.sleep(2)
+            err.empty()
