@@ -1,30 +1,10 @@
 import streamlit as st
-from docx import Document
-import pdfkit
+from docx2pdf import convert
 import os
 
 def convert_docx_to_pdf(docx_path, pdf_path):
-    # Read the DOCX file
-    doc = Document(docx_path)
-    html_content = ''
-    
-    # Convert DOCX content to HTML
-    for para in doc.paragraphs:
-        html_content += f'<p>{para.text}</p>'
-    
-    # Save HTML content to a temporary file
-    temp_html_path = 'temp.html'
-    with open(temp_html_path, 'w') as f:
-        f.write(html_content)
-    
-    # Configure pdfkit to use the path to wkhtmltopdf
-    config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
-    
-    # Convert HTML to PDF using pdfkit
-    pdfkit.from_file(temp_html_path, pdf_path, configuration=config)
-    
-    # Remove the temporary HTML file
-    os.remove(temp_html_path)
+    # Convert DOCX to PDF using docx2pdf
+    convert(docx_path, pdf_path)
 
 st.title("DOCX to PDF Converter")
 
