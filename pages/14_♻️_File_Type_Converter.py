@@ -8,17 +8,17 @@ st.set_page_config(
     page_icon="♻️",
 )
 
-t1,t2,t3 = st.tabs(["PDF to Docx","JPG to PDF","PPT to PDF"])
+t1,t2,t3 = st.tabs(["PDF to editable Docx","JPG to PDF","PPT to PDF"])
 
 with t1:
-    # convertapi.api_secret = 'I6QNdcljjJWKTIN3'
+    convertapi.api_secret = st.secrets["api_file"]
     def convert_pdf_to_docx(pdf_path, docx_path):
         try:
             result = convertapi.convert('docx', {'File': pdf_path}, from_format='pdf')
             result.save_files(docx_path)
-            st.success("Conversion successful!")
+            st.toast("✅Conversion successful!")
         except Exception as e:
-            st.error(f"Conversion failed: {e}")
+            st.error(f"⚠️Conversion failed: {e}")
     st.title("PDF to DOCX Converter")
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
     if uploaded_file is not None:
