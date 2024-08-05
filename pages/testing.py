@@ -29,13 +29,14 @@ if uploaded_file is not None:
     # Convert the PDF file to DOCX
     convert_pdf_to_docx(pdf_path, "output.docx")
     
-    # Allow the user to specify the filename
-    custom_filename = st.text_input("Enter the name for your DOCX file:", "output.docx")
+    # Add prefix to the filename
+    prefix = "convt_"
+    output_filename = f"{prefix}output.docx"
     
     # Provide the DOCX file for download
     if os.path.exists("output.docx"):
         with open("output.docx", "rb") as f:
-            st.download_button("Download DOCX", f, file_name=custom_filename)
+            st.download_button("Download DOCX", f, file_name=output_filename)
     else:
         st.error("DOCX file not generated.")
 
