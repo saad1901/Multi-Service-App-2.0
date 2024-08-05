@@ -17,8 +17,11 @@ def convert_docx_to_pdf(docx_path, pdf_path):
     with open(temp_html_path, 'w') as f:
         f.write(html_content)
     
+    # Configure pdfkit to use the path to wkhtmltopdf
+    config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
+    
     # Convert HTML to PDF using pdfkit
-    pdfkit.from_file(temp_html_path, pdf_path)
+    pdfkit.from_file(temp_html_path, pdf_path, configuration=config)
     
     # Remove the temporary HTML file
     os.remove(temp_html_path)
