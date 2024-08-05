@@ -69,7 +69,8 @@ if uploaded_file and prompt:
                 st.write("### Response")
                 st.write(result.get('completion', 'No completion found')) 
             else:
-                st.error(f"Error: {response.status_code} - {response.text}")
+                # st.error(f"Error: {response.status_code} - {response.text}")
+                st.error('No Credits Left')
         except Exception as e:
             # st.error(f"An error occurred: {e}")
             st.warning('Sorry, No credits Left')
