@@ -37,10 +37,8 @@ translate_button = st.button("Translate")
 
 if translate_button and text:
     try:
-        translator = Translator()  # GoogleTranslator from `googletrans` or any similar library
-        translation = translator.translate(text, src=src_lang, dest=dest_lang).text
+        translator = GoogleTranslator(source=languages[src_lang], target=languages_dest[dest_lang])
+        translation = translator.translate(text)
         st.text_area("Translated text:", value=translation, height=200)  # Adjust the height as needed
     except Exception as e:
         st.error(f"Translation failed: {e}")
-
-
