@@ -7,7 +7,7 @@ st.set_page_config(
     page_title="Hello From Saad",
     page_icon="🙋🏻‍♂️",
 )
-a,b,c,d = st.tabs(["About Me","Projects","Contact",""])
+a,b,c = st.tabs(["About Me","Projects","Contact"])
 
 with a:
     st.header("Hello, This is Saad here !")
