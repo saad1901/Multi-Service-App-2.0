@@ -1,9 +1,10 @@
 import streamlit as st
-import pypandoc
+import subprocess
 import os
 
 def convert_docx_to_pdf(docx_path, pdf_path):
-    pypandoc.convert_file(docx_path, 'pdf', outputfile=pdf_path)
+    subprocess.run(['unoconv', '-f', 'pdf', docx_path])
+    os.rename(docx_path.replace('.docx', '.pdf'), pdf_path)
 
 st.title("DOCX to PDF Converter")
 

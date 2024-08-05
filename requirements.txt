@@ -17,3 +17,4 @@ pdfkit
 wkhtmltopdf
 docx2pdf==0.1.8
 pypandoc
+unoconv
