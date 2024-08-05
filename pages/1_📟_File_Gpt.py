@@ -39,7 +39,7 @@ def extract_text(file):
     else:
         return "Unsupported file format."
 
-st.title("Document Q&A with Anthropic")
+st.subheader("Document Q&A with Anthropic")
 st.write("Upload a document (PDF, Word, PowerPoint) and ask a question or give a command to summarize the content.")
 
 uploaded_file = st.file_uploader("Upload a document", type=["pdf", "docx", "pptx"])
