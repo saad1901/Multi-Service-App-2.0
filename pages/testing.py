@@ -24,7 +24,7 @@ if uploaded_file is not None:
     with open("uploaded.docx", "wb") as f:
         f.write(uploaded_file.getbuffer())
     
-    # Convert the DOCX file to PDF
+    # Convert the DOCX file to 
     convert_docx_to_pdf("uploaded.docx", "output.pdf")
     
     # Provide the PDF file for download
