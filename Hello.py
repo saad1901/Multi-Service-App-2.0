@@ -1,13 +1,23 @@
 import streamlit as st
 import time
+import urllib.parse
 
 st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Hello From Saad",
     page_icon="🙋🏻‍♂️",
 )
+a,b,c,d = st.tabs(["About Me","Projects","Contact",""])
 
+with a:
+    st.header("Hello, This is Saad here !")
+    st.subheader("Welcome to My Application")
 
+with b:
+    pass
+
+with c:
+    pass
 
 # st.write("# Welcome to Streamlit! 👋")
 
