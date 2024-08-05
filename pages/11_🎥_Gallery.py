@@ -5,10 +5,10 @@ import os
 
 st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
-    page_title="Add Images",
+    page_title="Image Gallery",
     page_icon="📷",
 )
-a,b = st.tab(["Add Images","Gallery"])
+a,b = st.tabs(["Add Images","Gallery"])
 
 with a:
     st.subheader("Add Images")
