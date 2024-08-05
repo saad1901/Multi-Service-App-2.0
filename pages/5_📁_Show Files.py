@@ -34,10 +34,8 @@ with tab1:
 with tab2:
     st.text("⚠️Note: The Files won't be stored in Github")
     st.text("They'll be only available in RAM until the app is running and cache isn't cleared")
-    passwd = st.text_input('Enter Password ', type="password")
-
+    # passwd = st.text_input('Enter Password ', type="password")
     # if passwd == st.secrets['psd2']:
-
     def write_file(text, filename, extension):
         full_filename = filename + "." + extension
         if os.path.exists(full_filename):
@@ -62,6 +60,5 @@ with tab2:
         er = st.error('Above fields are mandatory')
         time.sleep(3)
         er.empty()
-
     # elif passwd != st.secrets["psd2"] and passwd != '':
     #     st.error('Wrong password!')
