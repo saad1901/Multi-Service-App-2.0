@@ -14,3 +14,4 @@ streamlit_folium
 python-docx
 fpdf2
 pdfkit
+wkhtmltopdf
