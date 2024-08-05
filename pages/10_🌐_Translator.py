@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🌐",
 )
 
-st.title("Language Translator")
+st.subheader("Language Translator")l
 languages = {
     "Auto Detect": "auto",
     "English": "en",
