@@ -30,8 +30,9 @@ languages_dest = {
 }
 
 text = st.text_area("Enter text to translate:")
-src_lang = st.selectbox("Source Language", list(languages.keys()))
-dest_lang = st.selectbox("Destination Language", list(languages_dest.keys()))
+a,b = st.columns(2)
+src_lang = a.selectbox("Source Language", list(languages.keys()))
+dest_lang = b.selectbox("Destination Language", list(languages_dest.keys()))
 translate_button = st.button("Translate")
 
 if translate_button and text:
