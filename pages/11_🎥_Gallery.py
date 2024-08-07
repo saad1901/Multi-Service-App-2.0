@@ -6,7 +6,7 @@ import os
 st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
 st.set_page_config(
     page_title="Image Gallery",
-    page_icon="📷",
+    page_icon="📷", 
 )
 a,b = st.tabs(["Add Images","Gallery"])
 
@@ -52,3 +52,4 @@ with b:
                 st.image(image, caption=os.path.basename(image_file), width=300)
     else:
         st.info("No images found. Please add images in the 'Add Images' section.")
+    
