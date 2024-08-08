@@ -10,7 +10,7 @@ RESULT_TYPE = 4
 headers = {"keyId": API_KEY_ID, "keySecret": API_KEY_SECRET}
 
 def main():
-    st.title("SpeechFlow Transcription Service")
+    st.subheader("Transcripter (Video/Audio to Text)")
 
     uploaded_file = st.file_uploader("Choose a video or audio file", type=["wav", "mp3", "mp4", "m4a", "flac"])
     if st.button("Transcribe"):
@@ -27,7 +27,7 @@ def main():
                 else:
                     st.error("Failed to retrieve transcription result.")
         else:
-            st.error("Please upload a file.")
+            st.warning("Please upload a file.")
 
 def create(uploaded_file):
     create_url = "https://api.speechflow.io/asr/file/v1/create"
