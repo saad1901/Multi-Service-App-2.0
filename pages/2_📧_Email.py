@@ -8,8 +8,8 @@ st.set_page_config(
     page_title="Email Service",
     page_icon="📧",
 )
-a,b = st.columns(2)
 st.header('Email Service by saad.BrevoAPI')
+a,b = st.columns(2)
 to = a.text_input("Enter Recipient's Address")
 subj = b.text_input("Subject of Email")
 msg = st.text_area('Enter Message to Send')
