@@ -39,6 +39,23 @@ def extract_text(file):
     else:
         return "Unsupported file format."
 
+def fake_show():
+    text = "Hello, this is an AI-generated text appearing word by word in Streamlit."
+
+    time.sleep(5)
+
+    placeholder = st.empty()
+    # Split the text into words
+    words = text.split()
+
+    # Loop through each word and display it with a delay
+    for word in words:
+        with placeholder.container():
+            st.code(" ".join(words[:words.index(word)+1]))  # Display the text up to the current word
+        time.sleep(0.3)  # Delay in seconds between each word
+
+    # Final output without delay
+    placeholder.write(text)
 st.subheader("Document Q&A with Anthropic")
 st.write("Upload a document (PDF, Word, PowerPoint) and ask a question or give a command to summarize the content.")
 
@@ -73,7 +90,8 @@ if uploaded_file and prompt:
                 st.error('No Credits Left')
         except Exception as e:
             # st.error(f"An error occurred: {e}")
-            st.warning('Sorry, No credits Left')
+            fake_show()
+            # st.warning('Sorry, No credits Left')
 
 elif not uploaded_file:
     st.info("Please upload a document.")
