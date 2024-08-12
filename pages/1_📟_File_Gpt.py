@@ -82,7 +82,8 @@ def fake_show():
         time.sleep(0.3)  # Delay in seconds between each word
 
     # Final output without delay
-    placeholder.write(text)
+    placeholder.write(summary)
+    
 st.subheader("Document Q&A with Anthropic")
 st.write("Upload a document (PDF, Word, PowerPoint) and ask a question or give a command to summarize the content.")
 

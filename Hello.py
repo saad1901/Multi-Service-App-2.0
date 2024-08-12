@@ -10,7 +10,7 @@ st.set_page_config(
 a,b,c = st.tabs(["About Me","Projects","Contact"])
 
 with a:
-    st.header("Hello, This is Saad here !")
+    st.header("Hello, Saad here !")
     st.subheader("Welcome to My Application")
 
 with b:
