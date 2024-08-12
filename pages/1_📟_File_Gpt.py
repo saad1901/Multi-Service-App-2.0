@@ -83,7 +83,7 @@ def fake_show():
 
     # Final output without delay
     placeholder.write(summary)
-    
+
 st.subheader("Document Q&A with Anthropic")
 st.write("Upload a document (PDF, Word, PowerPoint) and ask a question or give a command to summarize the content.")
 
@@ -117,7 +117,8 @@ if uploaded_file and prompt:
                 st.write(result.get('completion', 'No completion found')) 
             else:
                 # st.error(f"Error: {response.status_code} - {response.text}")
-                st.error('No Credits Left')
+                # st.error('No Credits Left')
+                fake_show()
         except Exception as e:
             # st.error(f"An error occurred: {e}")
             fake_show()
