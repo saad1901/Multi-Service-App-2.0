@@ -39,14 +39,41 @@ def extract_text(file):
     else:
         return "Unsupported file format."
 
-def fake_show():
-    text = "Hello, this is an AI-generated text appearing word by word in Streamlit."
+summary = """
+The document is a resume of Mohammad Saad, an IT student at the Government College of Engineering, Aurangabad. Key points include:
 
+### Skills:
+- **Programming:** C++, C, Python, SQL
+- **Cloud & Automation:** AWS, GCP, Docker, Ansible
+- **Web Development:** HTML, CSS, JS, Streamlit
+- **Others:** Networking, Linux, Cyber Security
+
+### Education:
+- **Bachelor of Information Technology (2021-2025):** CGPA 7.475
+- **High School (PCM stream, 2019-2021):** 95% in HSC
+
+### Projects:
+- **DonorSync:** A blood donor and recipient platform using Python, Streamlit, SQLite, and AWS.
+- **Cloud File Storage Application:** Developed with AWS S3, EC2, MySQL, and Python Boto3.
+- **AppHub:** A comprehensive Streamlit platform with cloud storage, translation, summarization, and more using AWS and various APIs.
+
+### Certifications:
+- Python Essentials 1 & 2 (Cisco)
+- AWS Knowledge: Architecting
+
+### Extracurricular:
+- Technical Assistant for IT department (2022-23)
+- Hostel In-Charge (2022)
+
+The resume also includes contact information and links to GitHub and LinkedIn profiles.
+"""
+
+def fake_show():
     time.sleep(5)
 
     placeholder = st.empty()
     # Split the text into words
-    words = text.split()
+    words = summary.split()
 
     # Loop through each word and display it with a delay
     for word in words:
@@ -58,6 +85,8 @@ def fake_show():
     placeholder.write(text)
 st.subheader("Document Q&A with Anthropic")
 st.write("Upload a document (PDF, Word, PowerPoint) and ask a question or give a command to summarize the content.")
+
+
 
 uploaded_file = st.file_uploader("Upload a document", type=["pdf", "docx", "pptx"])
 prompt = st.text_input("Enter your prompt", placeholder="Summarize the document")
