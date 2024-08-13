@@ -2,6 +2,12 @@ import streamlit as st
 import requests
 import time
 
+st.logo('images/banner-app-Photoroom.png', icon_image='images/image.png')
+st.set_page_config(
+    page_title="Transcripter",
+    page_icon="📄",
+)
+
 API_KEY_ID = st.secrets['vidtoaud1']
 API_KEY_SECRET = st.secrets['vidtoaud2']
 LANG = "en"
