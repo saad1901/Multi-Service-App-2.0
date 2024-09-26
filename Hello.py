@@ -11,7 +11,7 @@ a,b,c = st.tabs(["About Me","Projects","Contact"])
 
 with a:
     st.header("Hello, Saad here !")
-    st.subheader("Welcome to My Application")
+    # st.subheader("Welcome to My Application")
 
 with b:
     pass
