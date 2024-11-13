@@ -23,12 +23,7 @@ st.markdown("""
         border-bottom: 2px solid #2ecc71;
         margin-bottom: 10px;
     }
-    .skills-box {
-        background-color: #f5f5f5;
-        padding: 20px;
-        border-radius: 10px;
-    }
-    .projects-box {
+    .content-box {
         background-color: #f5f5f5;
         padding: 20px;
         border-radius: 10px;
@@ -51,51 +46,60 @@ st.write("##")
 
 # About Me
 st.markdown("<div class='section-title'>About Me</div>", unsafe_allow_html=True)
-st.write("I am a final-year IT student at Government College of Engineering, Aurangabad, specializing in software development and cloud technologies. I love building projects with Python, Streamlit, and AWS services.")
+st.markdown("""
+<div class='content-box'>
+I am a final-year IT student at Government College of Engineering, Aurangabad, specializing in software development and cloud technologies. I love building projects with Python, Streamlit, and AWS services.
+</div>
+""", unsafe_allow_html=True)
 
 # Skills Section
 st.markdown("<div class='section-title'>Skills</div>", unsafe_allow_html=True)
 st.markdown("""
-<div class='skills-box'>
-- **Programming:** C++, Python, SQL, Data Structures  
-- **Cloud & Automation:** AWS, Docker, Bash Scripting  
-- **Web Development:** Streamlit, HTML, CSS  
-- **Other Technologies:** Git, Networking, Linux, OOP  
+<div class='content-box'>
+<strong>Programming:</strong> C++, Python, SQL, Data Structures  <br>
+<strong>Cloud & Automation:</strong> AWS, Docker, Bash Scripting  <br>
+<strong>Web Development:</strong> Streamlit, HTML, CSS  <br>
+<strong>Other Technologies:</strong> Git, Networking, Linux, OOP  
 </div>
 """, unsafe_allow_html=True)
 
 # Education Section
 st.markdown("<div class='section-title'>Education</div>", unsafe_allow_html=True)
-st.write("""
-- **B.Tech in Information Technology**  
-  Government College of Engineering, Aurangabad (2021-2025)  
-  CGPA: 7.475  
-- **High School:**  
-  Al-Irfan Jr College, Aurangabad (2019-2021)  
-  95% in HSC  
-""")
+st.markdown("""
+<div class='content-box'>
+<strong>B.Tech in Information Technology</strong>  <br>
+Government College of Engineering, Aurangabad (2021-2025)  <br>
+CGPA: 7.475  <br><br>
+
+<strong>High School:</strong>  <br>
+Al-Irfan Jr College, Aurangabad (2019-2021)  <br>
+95% in HSC  
+</div>
+""", unsafe_allow_html=True)
 
 # Projects Section
 st.markdown("<div class='section-title'>Projects</div>", unsafe_allow_html=True)
 st.markdown("""
-<div class='projects-box'>
-- **[DonorSync](https://bloodmatch.streamlit.app/):**  
-  A platform for connecting blood donors and recipients. Built using Streamlit, SQLite, and Mail APIs.
-  
-- **[Cloud File Storage Application](https://saadapp.streamlit.app/):**  
-  Developed with AWS S3 and EC2, this project allows scalable file storage and management using Boto3.
-  
-- **AppHub:**  
-  A comprehensive platform that includes cloud storage, translation, text summarization, and document querying using the Anthropic API.
+<div class='content-box'>
+<strong><a href='https://bloodmatch.streamlit.app/'>DonorSync</a>:</strong>  <br>
+A platform for connecting blood donors and recipients. Built using Streamlit, SQLite, and Mail APIs.  <br><br>
+
+<strong><a href='https://saadapp.streamlit.app/'>Cloud File Storage Application</a>:</strong>  <br>
+Developed with AWS S3 and EC2, this project allows scalable file storage and management using Boto3.  <br><br>
+
+<strong>AppHub:</strong>  <br>
+A comprehensive platform that includes cloud storage, translation, text summarization, and document querying using the Anthropic API.
 </div>
 """, unsafe_allow_html=True)
 
 # Certifications Section
 st.markdown("<div class='section-title'>Certifications</div>", unsafe_allow_html=True)
-st.write("""
-- **Python Essentials 1 & 2** - Cisco  
-- **AWS Architecting**  
-""")
+st.markdown("""
+<div class='content-box'>
+<strong>Python Essentials 1 & 2</strong> - Cisco  <br>
+<strong>AWS Architecting</strong>  
+</div>
+""", unsafe_allow_html=True)
 
 # Contact Information
 st.markdown("""
@@ -104,12 +108,10 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Links for GitHub and LinkedIn (outside HTML to ensure they work)
+# Links for GitHub and LinkedIn
 st.markdown("""
 [GitHub](https://github.com/saad1901) | [LinkedIn](http://www.linkedin.com/in/saad99)
 """)
-
-
 
 
 
